@@ -2,7 +2,7 @@
 
 These are very good times
 
-Heroku Server: <https://wab92bodigam.herokuapp.com/>
+Heroku Server: <https://db92bodigam.herokuapp.com/>
 
 Class Resource: **Fishes**
 Attributes: fishname,habitat,classification,price

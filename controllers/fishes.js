@@ -6,7 +6,7 @@ exports.fish_list = async function (req, res) {
         res.send(theFishes);
     }
     catch (err) {
-        res.status(500).send(`{"error": ${err}}`);
+        res.send(`{"error": ${err}}`).status(500);
     }
     // res.send('NOT IMPLEMENTED: Fish list');
 };
@@ -15,7 +15,7 @@ exports.fish_detail = function (req, res) {
     res.send('NOT IMPLEMENTED: Fish detail: ' + req.params.id);
 };
 // Handle Fish create on POST.
-exports.fish_create_post = async function(req, res) {
+exports.fish_create_post = async function (req, res) {
     console.log(req.body)
     let document = new Fish();
     // We are looking for a body, since POST does not have query parameters.
@@ -25,15 +25,15 @@ exports.fish_create_post = async function(req, res) {
     document.fishname = req.body.fishname;
     document.habitat = req.body.habitat;
     document.classification = req.body.classification;
-    document.price=req.body.price;
-    try{
-    let result = await document.save();
-    res.send(result);
+    document.price = req.body.price;
+    try {
+        let result = await document.save();
+        res.send(result);
     }
-    catch(err){
-    res.status(500).send(`{"error": ${err}}`);
+    catch (err) {
+        res.send(`{"error": ${err}}`).status(500);
     }
-    };
+};
 // Handle Fish delete form on DELETE.
 exports.fish_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: Fish delete DELETE ' + req.params.id);
@@ -45,13 +45,13 @@ exports.fish_update_put = function (req, res) {
 
 // VIEWS
 // Handle a show all view
-exports.fish_view_all_Page = async function(req, res) {
-    try{
-    theFishes = await Fish.find();
-    console.log("njfndw")
-    res.render('fishes', { title: 'Fish Search Results', results: theFishes });
+exports.fish_view_all_Page = async function (req, res) {
+    try {
+        theFishes = await Fish.find();
+        console.log("njfndw")
+        res.render('fishes', { title: 'Fish Search Results', results: theFishes });
     }
-    catch(err){
-    res.status(500).send(`{"error": ${err}}`);
+    catch (err) {
+        res.send(`{"error": ${err}}`).status(500);
     }
-    };
+};

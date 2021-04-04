@@ -6,7 +6,7 @@ exports.fish_list = async function (req, res) {
         res.send(theFishes);
     }
     catch (err) {
-        res.error(500, `{"error": ${err}}`);
+        res.status(500).send(`{"error": ${err}}`);
     }
     // res.send('NOT IMPLEMENTED: Fish list');
 };
@@ -31,7 +31,7 @@ exports.fish_create_post = async function(req, res) {
     res.send(result);
     }
     catch(err){
-    res.error(500,`{"error": ${err}}`);
+    res.status(500).send(`{"error": ${err}}`);
     }
     };
 // Handle Fish delete form on DELETE.
@@ -52,6 +52,6 @@ exports.fish_view_all_Page = async function(req, res) {
     res.render('fishes', { title: 'Fish Search Results', results: theFishes });
     }
     catch(err){
-    res.send(500,`{"error": ${err}}`);
+    res.status(500).send(`{"error": ${err}}`);
     }
     };

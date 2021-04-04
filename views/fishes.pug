@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  - let fishes=[{fishname:"Apollo Fish",habitat:"Lowland Rivers",classification:"Cyprinidae",price:300},{fishname:"Paroon Shark",habitat:"River Channels",classification:"Pangasiidae",price:500},{fishname:"Brichardi",habitat:"Rocky Substrates",classification:"Cichlidae",price:1000}]
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each fish,index in fishes
+        div(class="col-sm-4 bg-info m-1 p-3" style=("font-weight:bolder")  onclick=`buy(${index})`) #{fish.fishname} - #{fish.habitat} - #{fish.classification} - #{fish.price}
+  script.
+     
+      function buy(itemNo)
+      {
+        alert(`You purchased Item ${itemNo+1}`)
+      }
+  

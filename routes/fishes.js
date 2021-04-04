@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const fish_controlers= require('../controllers/fishes');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('fishes', { title: 'Search Results Fishes' });
-});
-
+/* GET costumes */
+router.get('/', fish_controlers.fish_view_all_Page );
 module.exports = router;
+

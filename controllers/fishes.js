@@ -48,9 +48,10 @@ exports.fish_update_put = function (req, res) {
 exports.fish_view_all_Page = async function(req, res) {
     try{
     theFishes = await Fish.find();
+    console.log("njfndw")
     res.render('fishes', { title: 'Fish Search Results', results: theFishes });
     }
     catch(err){
-    res.error(500,`{"error": ${err}}`);
+    res.send(500,`{"error": ${err}}`);
     }
     };

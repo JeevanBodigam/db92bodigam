@@ -31,6 +31,7 @@ block content
   script.
     document.forms['FishForm'].addEventListener('submit', (event) => {
       event.preventDefault();
+      console.log(event.target)
       // TODO do something here to show user that form is being submitted
       fetch(event.target.action, {
         method: 'PUT',

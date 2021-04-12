@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+
+  - let fishid = toShow._id
+  - let fishname = toShow.fishname
+  - let classification = toShow.classification
+  - let habitat = toShow.habitat
+  - let price = toShow.price
+  div
+    div.row
+      div(class='costumeAttr mr-3') Fish ID is:
+      div #{fishid}
+    div.row
+      div(class='costumeAttr mr-3') Fish Name is:
+      div #{fishname}
+    div.row
+      div(class='costumeAttr mr-3') Fish Classification is:
+      div #{classification}
+    div.row
+      div(class='costumeAttr mr-3') Fish Habitat is:
+      div #{habitat}
+    div.row
+      div(class='costumeAttr mr-3') Fish Cost is:
+      div #{price}

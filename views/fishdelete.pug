@@ -1,46 +1,57 @@
 extends layout
 
 block content
-    h1= title
+  h1= title
 
-    - let fishid = toShow._id
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let fish = toShow._id
     - let fishname = toShow.fishname
-    - let classification = toShow.classification
     - let habitat = toShow.habitat
+    - let classification = toShow.classification
     - let price = toShow.price
+    - let actionid = "/resource/fishes/" + fish
+    script let actionid = "#{actionid}"
     div
-        div.row
-            div(class='costumeAttr mr-3') Fish ID is:
-            div(id="fishid") #{fishid}
-        div.row
-            div(class='costumeAttr mr-3') Fish Name is:
-            div #{fishname}
-        div.row
-            div(class='costumeAttr mr-3') Fish Classification is:
-            div #{classification}
-        div.row
-            div(class='costumeAttr mr-3') Fish Habitat is:
-            div #{habitat}
-        div.row
-            div(class='costumeAttr mr-3') Fish Cost is:
-            div #{price}
-        div.row
-            button(class='btn btn-danger btn-md m-auto'  type="submit" onclick=`deleteFish()`) Delete
+      div.row
+        div(class='costumeAttr mr-3') Fish ID is:
+        div #{fish}
+      div.row
+        div(class='costumeAttr mr-3') Fish Name is:
+        div #{fishname}
+      div.row
+        div(class='costumeAttr mr-3') Fish Habitat is:
+        div #{habitat}
+      div.row
+        div(class='costumeAttr mr-3') Fish Classification is:
+        div #{classification}
+      div.row
+        div(class='costumeAttr mr-3') Fish Price is:
+        div #{price}
 
-    script.
-        function deleteFish() {
-            let val=document.getElementById("fishid").innerHTML;
-            console.log(val)
-            // TODO do something here to show user that form is being submitted
-            fetch('/resource/fishes/'+ val, {
-                method: 'DELETE'
-            }).then((resp) => {
-                return resp.json(); // or resp.text() or whatever the server sends
-            }).then((body) => {
-                alert("Delete succeded")
-                 // TODO handle body
-            }).catch((error) => {
-                // TODO handle error
-                alert("Delete failed " + error )
-            });
-        };
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+  script.
+    function cancel() {
+      // Go back to the home page for the costume collection
+      window.location.href='/fishes'
+    }
+  script.
+    function deleteOnid() {
+      console.log("starting delete")
+      // delete first
+      fetch(actionid, {
+        method: 'DELETE'      // Don't need a body for the delete
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Delete succeded")
+        window.location.href='/fishes'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Delete failed " + error )
+      });
+    }

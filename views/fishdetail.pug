@@ -2,25 +2,27 @@ extends layout
 
 block content
   h1(id="myTitle")= title
-
-  - let fishid = toShow._id
-  - let fishname = toShow.fishname
-  - let classification = toShow.classification
-  - let habitat = toShow.habitat
-  - let price = toShow.price
-  div
-    div.row
-      div(class='costumeAttr mr-3') Fish ID is:
-      div(class='values spcl') #{fishid}
-    div.row
-      div(class='costumeAttr mr-3') Fish Name is:
-      div(class="values") #{fishname}
-    div.row
-      div(class='costumeAttr mr-3') Fish Classification is:
-      div(class="values") #{classification}
-    div.row
-      div(class='costumeAttr mr-3') Fish Habitat is:
-      div(class="values") #{habitat}
-    div.row
-      div(class='costumeAttr mr-3') Fish Cost is:
-      div(class="values") #{price}
+  if(toShow == null)
+    h2 No instance to show details
+  else
+    - let fishid = toShow._id
+    - let fishname = toShow.fishname
+    - let classification = toShow.classification
+    - let habitat = toShow.habitat
+    - let price = toShow.price
+    div
+      div.row
+        div(class='costumeAttr mr-3') Fish ID is:
+        div(class='values spcl') #{fishid}
+      div.row
+        div(class='costumeAttr mr-3') Fish Name is:
+        div(class="values") #{fishname}
+      div.row
+        div(class='costumeAttr mr-3') Fish Classification is:
+        div(class="values") #{classification}
+      div.row
+        div(class='costumeAttr mr-3') Fish Habitat is:
+        div(class="values") #{habitat}
+      div.row
+        div(class='costumeAttr mr-3') Fish Cost is:
+        div(class="values") #{price}

@@ -23,19 +23,19 @@ var Fish = require("./models/fishes");
 async function recreateDB() {
   // Delete everything
   await Fish.deleteMany();
-  let instance1 = new Fish({ fishname: "Apollo Fish", habitat: "Lowland Rivers", classification: "Cyprinidae", price: 300 });
+  let instance1 = new Fish({ fishname: "Apollo Fish", habitat: "Lowland Rivers", classification: "Cyprinidae", price: 1200 });
   instance1.save(function (err, doc) {
-    if (err) return console.error(err);
+    if (err) return console.error(err.message);
     console.log("First object saved")
   });
-  let instance2 = new Fish({ fishname: "Paroon Shark", habitat: "River Channels", classification: "Pangasiidae", price: 500 });
+  let instance2 = new Fish({ fishname: "Paroon Shark", habitat: "River Channels", classification: "Pangasiidae", price: 1500 });
   instance2.save(function (err, doc) {
-    if (err) return console.error(err);
+    if (err) return console.error(err.message);
     console.log("Second object saved")
   });
   let instance3 = new Fish({ fishname: "Brichardi", habitat: "Rocky Substrates", classification: "Cichlidae", price: 1000 });
   instance3.save(function (err, doc) {
-    if (err) return console.error(err);
+    if (err) return console.error(err.message);
     console.log("Thord object saved")
   });
 }

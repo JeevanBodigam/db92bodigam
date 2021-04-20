@@ -2,7 +2,6 @@ extends layout
 
 block content
   h1= title
-
   form(id='FishForm', action="/resource/fishes", method="POST")
     div.form-group
         label.costumeAttr(for='fishname') Fish Name
@@ -26,12 +25,16 @@ block content
         method: 'POST',
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
       }).then((resp) => {
+        //- document.getElementById("errors").style.display="block"
+        //- document.getElementById("errors").innerHTML=resp;
         return resp.json(); // or resp.text() or whatever the server sends
       }).then((body) => {
         alert("Save succeded")
         // TODO handle body
       }).catch((error) => {
         // TODO handle error
-        alert("Save failed " + error )
+        //- document.getElementById("errors").style.display="block"
+        //- document.getElementById("errors").innerHTML="hello";
+        alert("Save failed " + error)
       });
     });

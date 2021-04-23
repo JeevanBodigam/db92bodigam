@@ -4,8 +4,15 @@ const fishSchema = mongoose.Schema({
         type: String,
         required: [true, "Fishname is Required"]
     },
-    habitat: String,
-    classification: String,
+    habitat: {
+        type: String,
+        required: [true, "Fish Habitat is Required"]
+    },
+    classification: {
+        type: String,
+        minLength:[10,"Classification should be minimum of length 10 characters"],
+        required: [true, "Fish Classification is Required"]
+    },
     price: {
         type: Number,
         required: [true,"Price of the fish is required"],

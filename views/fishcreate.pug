@@ -30,10 +30,10 @@ block content
         return resp.json(); // or resp.text() or whatever the server sends
       }).then((body) => {
         if(body.name){
+          document.getElementById("errors").innerHTML=`${body.name}  \n ${body.message}\n`;
           alert("Save Failed")
-          document.getElementById("errors").innerHTML=`${body.name}  ${body.message}`;
         }else{
-           alert("Save succeded"+body)
+           alert("Save succeded")
         }
         // TODO handle body
       }).catch((error) => {

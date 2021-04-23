@@ -33,7 +33,7 @@ async function recreateDB() {
     if (err) return console.error(err.message);
     console.log("Second object saved")
   });
-  let instance3 = new Fish({ fishname: "Brichardi", habitat: "Rocky Substrates", classification: "Cichlidae", price: 1000 });
+  let instance3 = new Fish({ fishname: "Brichardi", habitat: "Rocky Substrates", classification: "Cichlidaess", price: 1000 });
   instance3.save(function (err, doc) {
     if (err) return console.error(err.message);
     console.log("Thord object saved")

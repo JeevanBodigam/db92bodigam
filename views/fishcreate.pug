@@ -2,6 +2,7 @@ extends layout
 
 block content
   h1= title
+  div#errors(style:{display:block;}) 
   form(id='FishForm', action="/resource/fishes", method="POST")
     div.form-group
         label.costumeAttr(for='fishname') Fish Name
@@ -25,11 +26,15 @@ block content
         method: 'POST',
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
       }).then((resp) => {
-        //- document.getElementById("errors").style.display="block"
-        //- document.getElementById("errors").innerHTML=resp;
+        document.getElementById("errors").style.display="block"
         return resp.json(); // or resp.text() or whatever the server sends
       }).then((body) => {
-        alert("Save succeded")
+        if(body.name){
+          alert("Save Failed")
+          document.getElementById("errors").innerHTML=`${body.name}  ${body.message}`;
+        }else{
+           alert("Save succeded"+body.name)
+        }
         // TODO handle body
       }).catch((error) => {
         // TODO handle error

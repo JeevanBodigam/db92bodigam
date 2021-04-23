@@ -41,8 +41,8 @@ exports.fish_create_post = async function (req, res) {
         res.send(result);
     }
     catch (err) {
-        console.log(err.message);
-        res.send(err.message)
+        // console.log(err);
+        res.send({"name":err.name,"message":err.message})
         res.status(500);
     }
 };

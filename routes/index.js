@@ -6,7 +6,7 @@ router.get('/', function (req, res) {
   res.render('index', { title: 'Fish App', user: req.user });
 });
 router.get('/register', function (req, res) {
-  res.render('register', { title: 'Shoe App Registration' });
+  res.render('register', { title: 'Fish App Registration' });
 });
 router.post('/register', function (req, res) {
   Account.findOne({ username: req.body.username },
@@ -55,7 +55,7 @@ router.get('/logout', function (req, res) {
   res.redirect('/');
 });
 router.get('/ping', function (req, res) {
-  res.status(200);
   res.send("pong!");
+  res.status(200);
 });
 module.exports = router;

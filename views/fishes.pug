@@ -3,14 +3,17 @@ extends layout
 block content
   h1= title
   - let fishes=results
+  - let destinationcreate = `dispatchCreate(\"/fishes/create\")`
   div(class="container-fluid")
+    button.btn( class="btn-primary ml-1 btn-lg", onclick= destinationcreate) Create
   div(class="row m-1")
+   
     each fish,index in fishes
       - let destinationupdate = `dispatch(\"/fishes/update?id=${fish._id}\")`
-      - let destinationcreate = `dispatchCreate(\"/fishes/create\")`
+      -let destinationdetail =   `dispatch(\"/fishes/detail?id=${fish._id}\")`
       - let destinationdelete = `dispatchDelete(\"/fishes/delete?id=${fish._id}\")`
         div(class="col-sm-4  m-1" style=("font-weight:bolder")) #{fish.fishname} - #{fish.habitat} - #{fish.classification} - #{fish.price}
-          button.btn( class="btn-primary ml-1", onclick= destinationcreate) Create
+          button.btn( class="btn-success ml-1", onclick= destinationdetail) Detail
           button.btn( class="btn-info ml-1", onclick= destinationupdate) Update
           button.btn( class="btn-danger ml-1", onclick= destinationdelete) Delete
   script.
